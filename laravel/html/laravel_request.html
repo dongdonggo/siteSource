@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel请求-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel请求</h2>
+            <div class="article-content">  <div> <div> 检索请求URI </div></div><div> <p style="text-align:justify;"> “路径”方法用于检索请求的URI。“is”方法用于检索在该方法的参数指定请求URI的模式匹配。要获得完整的URL，我们可以使用“url”的方法。 </p> <h3> 示例 </h3> <div> 第1步-&nbsp;执行以下命令来创建一个新的控制器 ： UriController。 </div><pre>php artisan make:controller UriController</pre> <div> 第2步&nbsp;-&nbsp;URL成功执行后，您会得到以下输出&nbsp;-<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023516439.png" alt="" /><br /> </div> <div> 第3步&nbsp;-&nbsp;创建一个控制器后，在该文件中添加以下代码。 </div> <p style="text-align:justify;"> <strong>app/Http/Controllers/UriController.php</strong> </p><pre>&lt;?phpnamespace AppHttpControllers;use IlluminateHttpRequest;use AppHttpRequests;use AppHttpControllersController;class UriController extends Controller { public function index(Request $request){ // Usage of path method $path = $request-&gt;path(); echo 'Path Method: '.$path; echo '&lt;br&gt;'; // Usage of is method $pattern = $request-&gt;is('foo/*'); echo 'is Method: '.$pattern; echo '&lt;br&gt;'; // Usage of url method $url = $request-&gt;url(); echo 'URL method: '.$url; }}</pre> <div> 第4步&nbsp;-&nbsp;添加下面一行到&nbsp;app/Http/route.php 文件。 </div> <p> <strong>app/Http/route.php</strong> </p><pre>&lt;?phpnamespace AppHttpControllers;use IlluminateHttpRequest;use AppHttpRequests;use AppHttpControllersController;class UserRegistration extends Controller { public function postRegister(Request $request){ //Retrieve the name input field $name = $request-&gt;input('name'); echo 'Name: '.$name; echo '&lt;br&gt;'; //Retrieve the username input field $username = $request-&gt;username; echo 'Username: '.$username; echo '&lt;br&gt;'; //Retrieve the password input field $password = $request-&gt;password; echo 'Password: '.$password; }}</pre> <div> 第5步-&nbsp;添加下面一行到文件&nbsp;-&nbsp;app/Http/routes.php。 </div> <p> <strong>app/Http/routes.php</strong> </p><pre>Route::get('/register',function(){ return view('register');});Route::post('/user/register',array('uses'=&gt;'UserRegistration@postRegister'));&nbsp;</pre> <p> 第6步&nbsp;-&nbsp;请访问以下网址，注册表单如下图所示。输入注册信息，然后点击"注册"，之后会看到检索并显示用户注册的详细信息在第二个页面上。 </p> <p> <strong>http://localhost:8000/register</strong> </p> <div> 第7步-&nbsp;输出结果如下面图所示。 </div></div><div> <img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023516297.png" alt="" /><br /></div><div> 填写完上述信息后，点击 " Register" 得到结果如下：</div><div style="font-family:微软雅黑;font-size:14px;background-color:#FFFFFF;"> <img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023516550.png" alt="" /><br /></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

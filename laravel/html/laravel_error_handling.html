@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel错误处理-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel错误处理</h2>
+            <div class="article-content">  <div> <div> Laravel所有的异常是由&nbsp;appExceptionsHandler&nbsp;类来处理。&nbsp;这个类包含两个方法&nbsp;-&nbsp;report 和 render。 </div></div><div> <h2> report()方法 </h2> <p style="text-align:justify;"> report()&nbsp;方法用于报告或记录异常。&nbsp;它也可以用来发送日志例外类似&nbsp;Sentry,&nbsp;Bugsnag&nbsp;等外部扩展服务 </p> <h2> render()方法 </h2> <div> render()&nbsp;方法用来呈现异常到HTTP响应送回浏览器。 </div> <p style="text-align:justify;"> 除了这两种方法，appExceptionsHandler&nbsp;类包含一个一个重要属性名为&nbsp;“$dontReport”。此属性采用的异常类型数组将不会被日志记录。 </p> <h2> <div> HTTP例外 </div> </h2> <p style="text-align:justify;"> 一些异常描述HTTP错误代码类似：404，500等。要在应用程序中的任何地方产生这样响应，你可以按如下方式使用abort()方法。 </p><pre>Route::get('/error',function(){ abort(404);});</pre> <div> 第2步&nbsp;-&nbsp;创建一个名为&nbsp;resources/views/errors/404.blade.php&nbsp;的视图文件，并复制下面的代码到此文件中。 </div> <p style="text-align:justify;"> resources/views/errors/404.blade.php </p><pre>&lt;!DOCTYPE html&gt;&lt;html&gt; &lt;head&gt; &lt;title&gt;404页面&lt;/title&gt; &lt;link href = "https://fonts.googleapis.com/css?family=Lato:100" rel = "stylesheet" type = "text/css"&gt; &lt;style&gt; html, body { height: 100%; } body { margin: 0; padding: 0; width: 100%; color: #B0BEC5; display: table; font-weight: 100; 'Lato'; } .container { text-align: center; display: table-cell; vertical-align: middle; } .content { text-align: center; display: inline-block; } .title { font-size: 72px; margin-bottom: 40px; } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;div class = "container"&gt; &lt;div class = "content"&gt; &lt;div class = "title"&gt;404 错误&lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt;&lt;/html&gt;</pre> <div> 第3步&nbsp;-&nbsp;访问以下网址测试事件。 </div> <p style="text-align:justify;"> http://localhost:8000/error </p> <div> 第4步&nbsp;-&nbsp;访问URL后，您会看到以下输出&nbsp;-<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023435687.png" alt="" /><br /> </div><img src="file://E:/data/youdao/qq24B39E2329F08D9F4C3146A571A415EF/408814c871994b53a3bd01f59caeb903/clipboard.png" /><br /></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

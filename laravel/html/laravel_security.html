@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel安全-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel安全</h2>
+            <div class="article-content">  <pre>Hash::check('secret', $hashedPassword)</pre> <div> 上述函数将返回布尔值。如果密码匹配它将返回true，否则返回false。 </div> <ul> <li> <p style="text-align:justify;"> 认证用户-在Laravel其他主要安全功能是验证用户和执行某些操作。Laravel使得此任务更容易，要做到这一点可以通过使用Auth::attempt()方法。 </p> </li> </ul><pre>if (Auth::attempt(array('email' =&gt; $email, 'password' =&gt; $password))) { return Redirect::intended('home');}</pre> <div> Auth::attempt()方法将凭证作为参数，并验证存储在数据库中的这些凭据，如果它是匹配将返回true，否则返回&nbsp;false。 </div> <ul> <li> <p style="text-align:justify;"> CSRF保护/跨站请求伪造&nbsp;(XSS)&nbsp;−&nbsp;攻击者把客户端的Javascript代码放页面在其他用户查看的页面时，跨站点脚本(XSS)攻击发生。&nbsp;为了避免这种攻击，千万不要相信任何用户提交的数据并转义任何危险的字符。在Blade模板应该使用双括号语法({{$value}})， </p> <div> 如果使用&nbsp;{!!&nbsp;$value&nbsp;!!}&nbsp;语法，数据会其原始格式来显示所以一定是安全的。 </div> </li> <li> <p style="text-align:justify;"> 避免SQL注入-&nbsp;SQL注入漏洞当应用程序插入任意和未经过滤的用户输入的SQL查询时存在的。默认情况下，Laravel会保护免受这种类型的攻击，因为在后台查询生成器使用PHP数据对象(PDO)类。&nbsp;PDO使用prepared语句，它允许您安全地传递任何参数，而无需转义它们。 </p> </li> <li> <p style="text-align:justify;"> COOKIEs&nbsp;-&nbsp;默认情况下安全&nbsp;−&nbsp;Laravel使用COOKIE类使得它很容易创建，读取和过期的COOKIEs。在Laravel所有的COOKIE是自动签名和加密。这意味着，如果它们被篡改，Laravel将自动丢弃它们。这也表示你将不能够从客户端使用&nbsp;Javascript&nbsp;读取。 </p> </li> <li> <p style="text-align:justify;"> 交换敏感数据时强制HTTPS&nbsp;−&nbsp;HTTPS防止在同一网络上拦截私人信息，如会话变量，并使用受害者这些信息来登录。 </p> </li> </ul></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

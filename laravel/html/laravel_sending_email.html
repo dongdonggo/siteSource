@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel发送邮件-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel发送邮件</h2>
+            <div class="article-content">  <div> Laravel使用功能丰富免费的“SwiftMailer”程序库来发送电子邮件。&nbsp;使用这个库函数，我们可以轻松地发送电子邮件。电子邮件模板以视图同样的方式加载，这意味着可以使用&nbsp;Blade&nbsp;语法并数据注入到你的模板。以下是发送函数的语法。</div><div> <table border="1" cellpadding="2" cellspacing="0" > <tbody> <tr> <th style="border:1px solid #999999;background-color:#EEEEEE;"> 语法 </th> <td style="border:1px solid #999999;background-color:inherit;"> void send(string|array $view, array $data, Closure|string $callback) </td> </tr> <tr> <th style="border:1px solid #999999;background-color:#EEEEEE;"> 参数 </th> <td style="border:1px solid #999999;background-color:inherit;"> <ul style="background-color:inherit;"> <li style="background-color:inherit;color:#000000;"> <p style="text-align:justify;font-size:15px !important;background-color:inherit;"> $view(string|array) –&nbsp;<span style="background-color:inherit;font-size:inherit;line-height:1.5;">包含电子邮件的视图的名称</span> </p> </li> <li style="background-color:inherit;color:#000000;"> <p style="text-align:justify;font-size:15px !important;background-color:inherit;"> $data(array) –&nbsp;<span style="background-color:inherit;font-size:inherit;line-height:1.5;">数组数据用来传递到视图</span> </p> </li> <li style="background-color:inherit;color:#000000;"> <p style="text-align:justify;font-size:15px !important;background-color:inherit;"> $callback –&nbsp;<span style="background-color:inherit;font-size:inherit;line-height:1.5;">接收邮件的实例，可自定义收件人，主题和邮件等方面的闭合回调</span> </p> </li> </ul> </td> </tr> <tr> <th style="border:1px solid #999999;background-color:#EEEEEE;"> 返回值 </th> <td style="border:1px solid #999999;background-color:inherit;"> nothing </td> </tr> <tr> <th style="border:1px solid #999999;background-color:#EEEEEE;"> 描述 </th> <td style="border:1px solid #999999;background-color:inherit;"> 发送邮件 </td> </tr> </tbody> </table> <div> 在第三个参数，&nbsp;$callback封闭收到消息实例以及与实例，我们还可以调用下面函数并更改信息，如下图所示。 </div> <ul> <li> $message-&gt;subject('Welcome to the Yiibai Yiibai'); </li> <li> $message-&gt;from('email@example.com', 'Mr. Example'); </li> <li> $message-&gt;to('email@example.com', 'Mr. Example'); </li> </ul> <div> 一些不太常用的方法包括&nbsp;- </div> <ul> <li> $message-&gt;sender('email@example.com', 'Mr. Example'); </li> <li> $message-&gt;returnPath('email@example.com'); </li> <li> $message-&gt;cc('email@example.com', 'Mr. Example'); </li> <li> $message-&gt;bcc('email@example.com', 'Mr. Example'); </li> <li> $message-&gt;replyTo('email@example.com', 'Mr. Example'); </li> <li> $message-&gt;priority(2); </li> </ul> <div> 要附加或嵌入文件，可以使用以下方法&nbsp;- </div> <ul> <li> $message-&gt;attach('path/to/attachment.txt'); </li> <li> $message-&gt;embed('path/to/attachment.jpg'); </li> </ul> <p style="text-align:justify;"> 邮件可以发送HTML或文本。您可以通过传递一个数组指明发送邮件的类型，如下图所示的第一个参数。默认类型为HTML。如果您想发送纯文本邮件，然后使用以下语法。 </p> <h2> 语法 </h2><pre>&lt;h1&gt;Hi, {{ $name }}&lt;/h1&gt;&lt;p&gt;Sending Mail from Laravel.&lt;/p&gt;</pre> <div> 第7步&nbsp;-&nbsp;添加以下行添加到&nbsp;app/Http/routes.php&nbsp;文件。 </div> <p> app/Http/routes.php </p><pre>Route::get('sendbasicemail','MailController@basic_email');Route::get('sendhtmlemail','MailController@html_email');Route::get('sendattachmentemail','MailController@attachment_email');</pre> <div> 第8步&nbsp;-&nbsp;访问以下网址测试基本电子邮件。 </div> <p> <em>http://localhost:8000/sendbasicemail</em> </p> <div> 第9步&nbsp;-&nbsp;输出的画面将是这个样子。请检查您的收件箱是否看到基本的电子邮件输出。 </div><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023440470.png" alt="" /><br /> <div> 第10步&nbsp;-&nbsp;访问以下网址来测试HTML电子邮件。 </div> <p> <em>http://localhost:8000/sendhtmlemail</em> </p> <p> 第11步&nbsp;-&nbsp;输出的画面将是这个样子。请检查您的收件箱是否看到HTML的电子邮件输出。 </p><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023440764.png" alt="" /><br /> <div> 第12步&nbsp;-&nbsp;请访问以下网址使用附件测试HTML电子邮件。 </div> <p> <em>http://localhost:8000/sendattachmentemail</em> </p> <div> 第13步&nbsp;-&nbsp;输出画面将是这个样子。请检查您的收件箱看到有附件的HTML电子邮件输出。 </div><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023440237.png" alt="" /> </div><div style="font-family:微软雅黑;font-size:14px;background-color:#FFFFFF;"> <br /></div><div> 打开邮件后：<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023440812.png" alt="" /><br /></div><div> <p> 注&nbsp;-&nbsp;在MailController.php文件中的表单方法的电子邮件地址是用来发送电子邮件的电子邮件地址。一般来说，它应是服务器上配置的电子邮件地址。 </p></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

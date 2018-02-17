@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel重定向-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel重定向</h2>
+            <div class="article-content">  <h2> 重定向至命名路由</h2><div> <p style="text-align:justify;"> 命名路由用于给出具体的名字命名到一个路由。名称可以使用“作为”数组键来被分配。 </p><pre>Route::get('user/profile', ['as' =&gt; 'profile', function () { //}]);</pre> <div> 注&nbsp;-&nbsp;在这里，我们命名为“profile”到路由“user/profile”。 </div> <h3> 示例 </h3> <div> 第1步&nbsp;-&nbsp;创建一个名为&nbsp;test.php&nbsp;的视图，并将其保存在resources/views/test.php。 </div><pre>&lt;html&gt; &lt;body&gt; &lt;h2&gt;Example of Redirecting to Named Routes&lt;/h2&gt; &lt;/body&gt;&lt;/html&gt;&nbsp;</pre> <p> 第2步&nbsp;-&nbsp;在 routes.php 文件中，我们已经创建了 test.php 文件的路由，把它重新命名为&nbsp;“testing”。我们还建立了一个路由&nbsp;“redirect”，这将请求重定向到指定路由“testing”。 </p> <p> <strong>app/Http/routes.php</strong> </p><pre>&lt;?phpnamespace AppHttpControllers;use IlluminateHttpRequest;use AppHttpRequests;use AppHttpControllersController;class RedirectController extends Controller { public function index(){ echo "Redirecting to controller's action."; }}&nbsp;</pre> <p> 第4步&nbsp;-&nbsp;添加以下行到文件：&nbsp;app/Http/routes.php. </p> <p> <strong>app/Http/routes.php</strong> </p><pre>Route::get('reindex','RedirectController@index');Route::get('/redirectcontroller',function(){ return redirect()-&gt;action('RedirectController@index');});</pre> <div> 第5步&nbsp;-&nbsp;请访问以下网址进行测试例子。 </div> <p> <em>http://localhost:8000/redirectcontroller</em> </p> <div> 第6步&nbsp;-&nbsp;输出结果如下图所示。<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023503876.png" alt="" /><br /> </div></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

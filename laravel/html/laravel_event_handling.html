@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel事件处理-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel事件处理</h2>
+            <div class="article-content">  <div> <div> 事件是通过程序所识别并程序可进行处理的动作或发生。Laravel事件只是提供了一个观察者的实现。事件可以通过以下步骤来处理&nbsp;- </div></div><div> <div> 第1步&nbsp;-&nbsp;创建一个事件类。 </div> <div> 事件类可以通过执行以下命令来创建。 </div><pre>php artisan make:event &lt;event-class&gt;&nbsp;</pre> <p style="text-align:justify;"> 在这里，&lt;event-class&gt;应使用事件类的名称来代替。创建的类将被存储在&nbsp;appEvents&nbsp;目录。 </p> <div> 第2步&nbsp;-&nbsp;创建一个处理类来处理创建的事件。<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023434951.png" alt="" /><br /> </div> <div> 事件处理类可以通过执行以下命令来创建。 </div><pre>php artisan handler:event &lt;handler-class&gt; --event = &lt;event-class&gt;&nbsp;</pre> <p style="text-align:justify;"> 在这里，&lt;event-class&gt;应使用我们在步骤1来代替应，&lt;handler-class&gt;&nbsp;创建事件类的名称使用处理程序类的名称来取代。新创建的处理程序类将被存储在appHandlersEvents&nbsp;目录。 </p> <div> 第3步&nbsp;-&nbsp;注册事件类及其事件服务提供者类处理程序。 </div> <p style="text-align:justify;"> 现在，我们需要注册该事件在文件&nbsp;-&nbsp;appProvidersEventServiceProvier.php。&nbsp;此文件包含一个数组：$listen。在这个数组，我们需要事件类添加作为键以及事件处理程序类作为它的值。 </p> <div> 第4步&nbsp;-&nbsp;触发事件。 </div> <p style="text-align:justify;"> 最后一步是触发使用事件门面触发事伯。fire()方法由事件类的对象调用。事件可以触发如下&nbsp;- </p><pre>Route::get('event','CreateStudentController@insertform');Route::post('addstudent','CreateStudentController@insert');</pre> <div> 第12步&nbsp;-&nbsp;访问以下网址测试活动。 </div> <p style="text-align:justify;"> http://localhost:8000/event </p> <div> 第13步&nbsp;-&nbsp;访问上述网址后，您会收到以下输出&nbsp;-<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023434813.png" alt="" /><br /> </div><img src="file://E:/data/youdao/qq24B39E2329F08D9F4C3146A571A415EF/53a245af8a2f435b97a20bc9f90467c6/clipboard.png" /><br /> <p style="text-align:justify;"> 第14步&nbsp;-&nbsp;增加学生的姓名，然后点击“添加学生”按钮，将您重定向到下面的屏幕。看看灰色高亮行。&nbsp;我们已经指定处理方法，在一个事件被触发执行HandleNewStudentAdded类的处理方法时添加此行。<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023434576.png" alt="" /> </p><img src="file://E:/data/youdao/qq24B39E2329F08D9F4C3146A571A415EF/2f563ebccb204ef0b1f346e09660be4d/clipboard.png" /><br /></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

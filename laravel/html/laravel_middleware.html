@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel中间件-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel中间件</h2>
+            <div class="article-content">  <div> <div> 正如其名称提示，中间件作为请求和响应之间的中间人。它是一种过滤机制类型。例如，Laravel包括一个中间件用来验证应用程序的用户认证与否。如果用户通过验证，它将被重定向到主页，否则将被重定向到登录页面。 </div></div><div> <div> 中间件可以通过执行以下命令来创建&nbsp;- </div><pre>php artisan make:middleware &lt;middleware-name&gt;&nbsp;</pre> <p style="text-align:justify;"> 使用你的中间件名称替换&lt;middleware-name&gt;。创建可以看到中间件在&nbsp;app/Http/Middleware&nbsp;目录。 </p> <h3> 示例 </h3> <div> 第1步&nbsp;-&nbsp;现在，让我们创建&nbsp;AgeMiddleware&nbsp;中间件。我们需要执行下面的命令- </div><pre>php artisan make:middleware AgeMiddleware</pre> <div> 第2步&nbsp;-&nbsp;命令成功执行后，会收到以下输出&nbsp;-<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023521243.jpg" alt="" /><br /> </div> <p style="text-align:justify;"> 第3步&nbsp;−&nbsp;AgeMiddlware&nbsp;会在&nbsp;app/Http/Middleware 文件中创建。新创建的文件将自动创建下面代码： </p><pre>&lt;?phpnamespace AppHttpMiddleware;use Closure;class AgeMiddleware { public function handle($request, Closure $next) { return $next($request); }}</pre> <h2> <div> 注册中间件 </div> </h2> <div> 我们需要在使用前注册每一个中间件。在Laravel有两种类型的中间件。 </div> <ul> <li> <div> 全局中间件 </div> </li> <li> <div> 路由中间件 </div> </li> </ul> <p style="text-align:justify;"> 全局中间件将在应用程序的每个HTTP请求运行，而路由中间件将被分配到一个特定的路由。中间件可在&nbsp;app/Http/Kernel.php&nbsp;注册.&nbsp;<br />该文件包含两个属性：&nbsp;$middleware&nbsp;和&nbsp;$routeMiddleware。$middleware&nbsp;属性用于注册全局中间件，$routeMiddleware属性用于注册路由指定中间件。 </p> <div> 要注册全局中间件，列出的类在&nbsp;$middleware&nbsp;属性的结尾。 </div><pre>php artisan make:middleware TerminateMiddleware</pre> <div> 第2步&nbsp;-&nbsp;这将产生以下输出&nbsp;-<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023522609.png" alt="" /><br /> </div> <p> 第3步&nbsp;-&nbsp;复制下面的代码到新创建文件 -&nbsp;TerminateMiddleware 在&nbsp;<strong><em>app/Http/Middleware/TerminateMiddleware.php</em></strong> 文件中如下： </p><pre>&lt;?phpnamespace AppHttpMiddleware;use Closure;class TerminateMiddleware { public function handle($request, Closure $next) { echo "Executing statements of handle method of TerminateMiddleware."; return $next($request); } public function terminate($request, $response){ echo "&lt;br&gt;Executing statements of terminate method of TerminateMiddleware."; }}</pre> <p> 第4步&nbsp;&nbsp;− 注册&nbsp;TerminateMiddleware&nbsp;到&nbsp;<strong>appHttpKernel.php</strong><strong>&nbsp;</strong>文件中.<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023522288.jpg" alt="" /> </p> <p> 加了灰色突出的线条的是该文件中注册的&nbsp;TerminateMiddleware&nbsp;中间件。 </p> <div> 第5步&nbsp;-&nbsp;执行以下命令来创建一个控制器。 </div><pre>php artisan make:controller ABCController</pre> <div> 第6步&nbsp;-&nbsp;URL成功执行后，会收到以下输出&nbsp;-<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023524443.png" alt="" /><br /> </div> <div> 第7步&nbsp;-&nbsp;将以下代码复制到&nbsp;<strong>app/Http/ABCController.php&nbsp;</strong>文件。 </div> <p> <strong><em>app/Http/ABCController.php</em></strong> </p><pre>&lt;?phpnamespace AppHttpControllers;use IlluminateHttpRequest;use AppHttpRequests;use AppHttpControllersController;class ABCController extends Controller { public function index(){ echo "&lt;br&gt;ABC Controller."; }}</pre> <div> 第8步&nbsp;-&nbsp;添加下面的一行代码到&nbsp;<strong>app/Http/routes.php&nbsp;</strong>文件。 </div> <p> <em><strong>app/Http/routes.php</strong></em> </p><pre>Route::get('terminate',[ 'middleware' =&gt; 'terminate', 'uses' =&gt; 'ABCController@index',]);</pre> <div> 第9步&nbsp;-&nbsp;访问以下网址测试可终止中间件。 </div> <p> http://localhost:8000/terminate </p> <div> 第10步&nbsp;-&nbsp;如下面的图片输出的结果。<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023524795.png" alt="" /><br /> </div></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

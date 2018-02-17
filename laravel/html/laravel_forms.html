@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel表单处理-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel表单处理</h2>
+            <div class="article-content">  <div> <div> Laravel提供了各种内置的标签，以方便，安全地处理HTML表单。所有 HTML 的主要元素都是可以使用Laravel来产生的。为了支持这一点，我们需要使用composer来将HTML包添加到Laravel。 </div></div><div> <p style="text-align:justify;"> 安装请参考：<a href="https://laravelcollective.com/docs/5.2/html#installation">https://laravelcollective.com/docs/5.2/html#installation</a> </p> <h2> 实例-1 </h2> <p> 通过Composer安装此软件包。编辑你项目里边的&nbsp;composer.json&nbsp;文件添加所需的&nbsp;<em>laravelcollective</em><em>/</em><em>html</em> </p><pre>"require": { "laravelcollective/html": "5.2.*"}</pre> <div> 在终端执行下一步，更新Composer&nbsp;： </div><pre>D:laravel&gt; composer update</pre> <p> 接下来，将新的提供程序加入到&nbsp;config/app.php&nbsp;文件中的&nbsp;&nbsp;providers&nbsp;数组 </p><pre><span style="background-color:inherit;color:#555555;">'providers'</span><span style="background-color:rgba(255, 255, 255, 0.498039);color:#555555;">=</span><span style="background-color:rgba(255, 255, 255, 0.498039);color:#555555;">&gt;</span><span style="background-color:inherit;color:#999999;">[</span><span style="background-color:inherit;color:#999999;"> // ... </span><span style="background-color:inherit;color:#F66153;">Collective<span style="background-color:inherit;color:#999999;"></span>Html<span style="background-color:inherit;color:#999999;"></span>HtmlServiceProvider<span style="background-color:inherit;color:#999999;">::</span></span><span style="background-color:inherit;color:#0077AA;">class</span><span style="background-color:inherit;color:#999999;">,</span><span style="background-color:inherit;color:#999999;"> // ... </span><span style="background-color:inherit;color:#999999;">]</span><span style="background-color:inherit;color:#999999;">,</span></pre> <p> 最后，将新的提供程序加入到&nbsp;<em>config</em><em>/</em><em>app</em><em>.</em><em>php</em>&nbsp;文件中的&nbsp;&nbsp;<strong>aliases&nbsp;</strong>数组： </p><pre>echo Form::checkbox('name', 'value', true);echo Form::radio('name', 'value', true);</pre> <h3> <div> 生成一个下拉列表 </div> </h3><pre>echo Form::select('size', array('L' =&gt; 'Large', 'S' =&gt; 'Small'));</pre> <h3> <div> 生成一个提交按钮 </div> </h3><pre>echo Form::submit('Click Me!');</pre> <h2> 实例 - 2 </h2> <p> 第1步&nbsp;-&nbsp;复制下面的代码创建一个视图名为<em><strong>&nbsp;</strong></em><em><strong>resources/views/form.php</strong></em> </p><pre>&lt;html&gt; &lt;body&gt; &lt;?php echo Form::open(array('url' =&gt; 'foo/bar')); echo Form::text('username','yiibai-user'); echo '&lt;br/&gt;'; echo Form::text('email', 'example@yiibai.com'); echo '&lt;br/&gt;'; echo Form::password('password'); echo '&lt;br/&gt;'; echo Form::checkbox('name', 'value'); echo '&lt;br/&gt;'; echo Form::radio('name', 'value'); echo '&lt;br/&gt;'; echo Form::file('image'); echo '&lt;br/&gt;'; echo Form::select('size', array('L' =&gt; '大妈', 'S' =&gt; '小码')); echo '&lt;br/&gt;'; echo Form::submit('点击我!'); echo Form::close(); ?&gt; &lt;/body&gt;&lt;/html&gt;</pre> <div> 第2步-&nbsp;添加应用程序中以下行到文件&nbsp;-&nbsp;app/Http/routes.php&nbsp;以添加视图&nbsp;form.php&nbsp;的路由 </div> <p> app/Http/routes.php </p><pre>Route::get('/form',function(){ return view('form');});</pre> <div> 第3步&nbsp;-&nbsp;访问以下网址来查看表单。 </div> <p> http://localhost:8000/form </p> <div> 第4步&nbsp;-&nbsp;如下面的图输出结果。<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023450786.png" alt="" /><br /> </div></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>

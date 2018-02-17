@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Laravel验证-Laravel教程-吕滔博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="https://www.lvtao.net/usr/themes/default/assets/favicon.ico"/>
+    <link href="/study_doc/style.css" rel="stylesheet" />
+</head>
+<body>
+<div id="header">
+    <div class="outer">
+        <h1 class="logo">Laravel</h1>
+    </div>
+</div>
+<div id="article">
+    <div class="outer">
+        <div class="sidebar">
+            <a href="index.html"><i class="icon">&#xe6a7;</i>Laravel教程</a><a href="laravel_installation.html"><i class="icon">&#xe6a7;</i>Laravel环境安装配置</a><a href="laravel_application_structure.html"><i class="icon">&#xe6a7;</i>Laravel应用程序结构</a><a href="laravel_configuration.html"><i class="icon">&#xe6a7;</i>Laravel配置</a><a href="laravel_routing.html"><i class="icon">&#xe6a7;</i>Laravel路由</a><a href="laravel_middleware.html"><i class="icon">&#xe6a7;</i>Laravel中间件</a><a href="laravel_controllers.html"><i class="icon">&#xe6a7;</i>Laravel控制器</a><a href="laravel_request.html"><i class="icon">&#xe6a7;</i>Laravel请求</a><a href="laravel_cookie.html"><i class="icon">&#xe6a7;</i>Laravel Cookie</a><a href="laravel_response.html"><i class="icon">&#xe6a7;</i>Laravel响应</a><a href="laravel_views.html"><i class="icon">&#xe6a7;</i>Laravel视图</a><a href="laravel_redirections.html"><i class="icon">&#xe6a7;</i>Laravel重定向</a><a href="laravel_working_with_database.html"><i class="icon">&#xe6a7;</i>Laravel操作数据库</a><a href="insert_records.html"><i class="icon">&#xe6a7;</i>Laravel插入数据库表数据</a><a href="retrieve_records.html"><i class="icon">&#xe6a7;</i>Laravel检索查询数据</a><a href="update_records.html"><i class="icon">&#xe6a7;</i>Laravel更新数据</a><a href="delete_records.html"><i class="icon">&#xe6a7;</i>Laravel删除数据</a><a href="laravel_errors_and_logging.html"><i class="icon">&#xe6a7;</i>Laravel错误和日志记录</a><a href="laravel_forms.html"><i class="icon">&#xe6a7;</i>Laravel表单处理</a><a href="laravel_localization.html"><i class="icon">&#xe6a7;</i>Laravel本地化</a><a href="laravel_session.html"><i class="icon">&#xe6a7;</i>Laravel会话(session)</a><a href="laravel_validation.html"><i class="icon">&#xe6a7;</i>Laravel验证</a><a href="laravel_file_uploading.html"><i class="icon">&#xe6a7;</i>Laravel文件上传</a><a href="laravel_sending_email.html"><i class="icon">&#xe6a7;</i>Laravel发送邮件</a><a href="laravel_ajax.html"><i class="icon">&#xe6a7;</i>Laravel Ajax</a><a href="laravel_error_handling.html"><i class="icon">&#xe6a7;</i>Laravel错误处理</a><a href="laravel_event_handling.html"><i class="icon">&#xe6a7;</i>Laravel事件处理</a><a href="laravel_facades.html"><i class="icon">&#xe6a7;</i>Laravel Facades</a><a href="laravel_security.html"><i class="icon">&#xe6a7;</i>Laravel安全</a>
+        </div>
+        <div class="article_area">
+            <h2 class="title">Laravel验证</h2>
+            <div class="article-content">  <div> 在设计的应用程序验证是最重要的一个方面。它会验证输入的数据。默认情况下，基本控制器类使用一个&nbsp;ValidatesRequests&nbsp;其提供一个多种强大的验证规则和方法来验证传入的HTTP请求。</div><div> <h2> <div> Laravel可用的验证规则 </div> </h2> <table border="1" cellpadding="2" cellspacing="0" > <tbody> <tr> <th colspan="3" > <div style="background-color:inherit;"> Laravel可用的验证规则 </div> </th> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Accepted </td> <td style="border:1px solid #999999;background-color:inherit;"> Active URL </td> <td style="border:1px solid #999999;background-color:inherit;"> After (Date) </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Alpha </td> <td style="border:1px solid #999999;background-color:inherit;"> Alpha Dash </td> <td style="border:1px solid #999999;background-color:inherit;"> Alpha Numeric </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Array </td> <td style="border:1px solid #999999;background-color:inherit;"> Before (Date) </td> <td style="border:1px solid #999999;background-color:inherit;"> Between </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Boolean </td> <td style="border:1px solid #999999;background-color:inherit;"> Confirmed </td> <td style="border:1px solid #999999;background-color:inherit;"> Date </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Date Format </td> <td style="border:1px solid #999999;background-color:inherit;"> Different </td> <td style="border:1px solid #999999;background-color:inherit;"> Digits </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Digits Between </td> <td style="border:1px solid #999999;background-color:inherit;"> E-Mail </td> <td style="border:1px solid #999999;background-color:inherit;"> Exists (Database) </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Image (File) </td> <td style="border:1px solid #999999;background-color:inherit;"> In </td> <td style="border:1px solid #999999;background-color:inherit;"> Integer </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> IP Address </td> <td style="border:1px solid #999999;background-color:inherit;"> JSON </td> <td style="border:1px solid #999999;background-color:inherit;"> Max </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> MIME Types(File) </td> <td style="border:1px solid #999999;background-color:inherit;"> Min </td> <td style="border:1px solid #999999;background-color:inherit;"> Not In </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Numeric </td> <td style="border:1px solid #999999;background-color:inherit;"> Regular Expression </td> <td style="border:1px solid #999999;background-color:inherit;"> Required </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Required If </td> <td style="border:1px solid #999999;background-color:inherit;"> Required Unless </td> <td style="border:1px solid #999999;background-color:inherit;"> Required With </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Required With All </td> <td style="border:1px solid #999999;background-color:inherit;"> Required Without </td> <td style="border:1px solid #999999;background-color:inherit;"> Required Without All </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Same </td> <td style="border:1px solid #999999;background-color:inherit;"> Size </td> <td style="border:1px solid #999999;background-color:inherit;"> String </td> </tr> <tr> <td style="border:1px solid #999999;background-color:inherit;"> Timezone </td> <td style="border:1px solid #999999;background-color:inherit;"> Unique (Database) </td> <td style="border:1px solid #999999;background-color:inherit;"> URL </td> </tr> </tbody> </table> <p style="text-align:justify;"> Laravel总是会检查是否存在错误在会话数据中，如果它们都可用就会自动将其绑定到视图。&nbsp;因此，要注意，$error&nbsp;变量总是会在每次请求视图时都是可以访问的，$errors&nbsp;变量就类似在应用中是始终定义的，可以放心使用。$errors&nbsp;变量是&nbsp;IlluminateSupportMessageBag的一个实例。可以通过将代码将错误消息显示在视图文件中，如下所示。 </p><pre>&lt;html&gt; &lt;head&gt; &lt;title&gt;登录示例表单&lt;/title&gt; &lt;/head&gt; &lt;body&gt; @if (count($errors) &gt; 0) &lt;div class = "alert alert-danger"&gt; &lt;ul&gt; @foreach ($errors-&gt;all() as $error) &lt;li&gt;{{ $error }}&lt;/li&gt; @endforeach &lt;/ul&gt; &lt;/div&gt; @endif &lt;?php echo Form::open(array('url'=&gt;'/validation')); ?&gt; &lt;table border = '1'&gt; &lt;tr&gt; &lt;td align = 'center' colspan = '2'&gt;登录示例&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;用户名：&lt;/td&gt; &lt;td&gt;&lt;?php echo Form::text('username'); ?&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;密码：&lt;/td&gt; &lt;td&gt;&lt;?php echo Form::password('password'); ?&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align = 'center' colspan = '2'&gt; &lt;?php echo Form::submit('登陆'); ? &gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;?php echo Form::close(); ?&gt; &lt;/body&gt;&lt;/html&gt;&nbsp;</pre> <p style="text-align:justify;"> 第5步&nbsp;-&nbsp;添加以下行到&nbsp;app/Http/routes.php. </p> <p style="text-align:justify;"> app/Http/routes.php </p><pre>Route::get('/validation','ValidationController@showform');Route::post('/validation','ValidationController@validateform');</pre> <div> 第6步&nbsp;-&nbsp;请访问以下网址进行测试验证。 </div> <p style="text-align:justify;"> http://localhost:8000/validation </p> <p style="text-align:justify;"> <img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023445581.png" alt="" /><br />&nbsp;第7步&nbsp;-&nbsp;无需在文本字段中输入任何内容直接点击“登录”按钮。&nbsp;输出将如下面的图所示。<br /><img src="https://www.lvtao.net/study_doc/uploadfile/2017/0421/20170421023445785.png" alt="" /> </p></div><br/> </div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="outer">
+        Powered By <a href="https://www.lvtao.net" target="_blank">吕滔博客</a>
+    </div>
+</div>
+</body>
+<div style="display:none;"><script src="https://s11.cnzz.com/z_stat.php?id=2109427&web_id=2109427" language="JavaScript"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?33cc09e0794d203c608fa36a59305449";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script></div>
+</html>
