@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title>前端工具箱</title>
+    <style type="text/css">
+        ul,li{margin:0px;padding:0px;list-style-type: none;}
+        .left{
+            border-right:1px solid #EEE;
+        }
+
+        .tool-nav li{
+            display: block;
+            text-decoration: none;
+            height:42px;
+            line-height: 42px;
+            border-radius: 3px;
+            text-indent:20px;
+            cursor: pointer;
+            color:	#1E90FF
+        }
+
+        .tool-nav li.current{
+            background-color:#CCC;
+            color:#333
+        }
+
+        .tool-nav li:hover{
+            background-color: #EEE;
+        }
+
+        .tooltitle{
+            font-size:20px;
+        }
+
+        .tooltips{
+            font-size:16px;
+        }
+
+        .hText{
+            height:200px !important;
+        }
+
+        .btns{
+            margin-top:10px;
+        }
+        .bText{
+            height:400px !important;
+        }
+
+        .select{
+            display:inline-block;
+            width:140px;
+        }
+
+        .line{
+            margin:10px;
+        }
+        .clearfix{
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="left col-sm-3">
+            <h1>前端工具箱</h1>
+            <ul class="tool-nav">
+                <li class="current" data-page="csspacker">CSS压缩/格式化</li>
+                <li data-page="json">Json工具</li>
+                <li data-page="htmlcodegov">HTML多功能代码转换器</li>
+                <li data-page="js-html">JavaScript 转 HTML</li>
+                <li data-page="jspacker">JavaScript加密/压缩/格式化</li>
+                <li data-page="jshun">JavaScript代码混淆加密</li>
+                <li data-page="jingzhi">2/8/10/16进制转换</li>
+                <li data-page="unicode">Unicode转换</li>
+                <li data-page="url">UrlEncode / UrlDecode</li>
+                <li data-page="ubb">HTML2UBB / UBB2HTML</li>
+                <li data-page="robots">Robots生成</li>
+                <li data-page="htpasswd">htpasswd生成</li>
+                <li data-page="editplus">EditPlus 在线授权服务</li>
+            </ul>
+        </div>
+        <div class="col-sm-9" id="tool">
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var ext = ".html";
+        var app_path = "./app/";
+        $(function(){
+            $("#tool").load(app_path+"csspacker"+ext);
+        })
+        $(".tool-nav li").click(function(){
+            var page = $(this).data("page");
+            $("#tool").load(app_path+page+ext);
+            $(this).addClass("current").siblings().removeClass("current");
+        })
+    </script>
+</body>
+</html>

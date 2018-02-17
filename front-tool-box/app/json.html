@@ -1,0 +1,55 @@
+<script type="text/javascript" src="app/js/jsoneditor.js"></script>
+<link href="app/css/jsoneditor.css" rel="stylesheet" />
+<h1 class="tooltitle">Json工具</h1>
+<h2 class="tooltips">对Json进行压缩 / 解压 / 解析</h2>
+<div id="soruce" style="height:380px;"></div>
+<div class="btns">
+    <button type="button" class="btn btn-success" id="parse">解析JSON</button>
+</div>
+<h2 class="tooltips">结果:</h2>
+<div id="result"></div>
+<script type="text/javascript">
+var container = document.getElementById('soruce');
+var rContainer = document.getElementById('result');
+var options = {
+    mode: 'code',
+    onError: function (err) {
+        alert(err.toString());
+    },
+    onModeChange: function (newMode, oldMode) {
+        console.log('Mode switched from', oldMode, 'to', newMode);
+    },
+    indentation:4
+};
+var rOptions = {
+    mode: 'view',
+    onEditable: function (node) {
+        if (!node.path) {
+            return false;
+        }
+    },
+    onError: function (err) {
+        alert(err.toString());
+    },
+    onModeChange: function (newMode, oldMode) {
+        console.log('Mode switched from', oldMode, 'to', newMode);
+    },
+    indentation:4
+};
+var json = {
+    "array": [1, 2, 3],
+    "boolean": true,
+    "null": null,
+    "number": 123,
+    "object": {"a": "b", "c": "d"},
+    "string": "Hello World"
+};
+
+var seditor = new JSONEditor(container, options, json);
+
+var reditor = new JSONEditor(rContainer,rOptions,json);
+document.getElementById('parse').onclick = function(){
+    var org = seditor.get();
+    reditor.set(org);
+}
+</script>
